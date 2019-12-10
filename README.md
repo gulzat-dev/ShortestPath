@@ -10,7 +10,7 @@
 ##### 8: A C
 ##### 9: B B
 
-from 1 - 5 command find distance of route
-command 6,7 The number of trips starting at "C" and ending at "C "with a maximum of 3 stops
-command 8 The length of the shortest route from source to another point
-command 9 The length of the shortest route from source to source
+### command 1 - 5  find distance of route
+### command 6,7 The number of trips starting at "C" and ending at "C "with a maximum of 3 stops
+### command 8 The length of the shortest route from source to another point
+### command 9 The length of the shortest route from source to source
