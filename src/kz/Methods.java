@@ -37,8 +37,7 @@ public class Methods {
             }
           return count ;
     }
-
-    public static int calculateShortestPathFromSource(Graph graph, Node source, Node destination) {
+    public static Graph calculateShortestPath(Graph graph, Node source, Node destination) {
         source.setDistance(0);
         Set<Node> settledNodes = new HashSet<>();
         Set<Node> unsettledNodes = new HashSet<>();
@@ -57,34 +56,23 @@ public class Methods {
             }
             settledNodes.add(currentNode);
         }
+        return graph;
+    }
+    public static int calculateShortestPathFromSource(Graph graph, Node source, Node destination) {
+        graph = calculateShortestPath(graph,source,destination);
         return graph.getNodeByName(destination.getName()).getDistance();
     }
     public static int calculateShortestPathFromSource2(Graph graph, Node source, Node destination) {
-        source.setDistance(0);
-        Set<Node> settledNodes = new HashSet<>();
-        Set<Node> unsettledNodes = new HashSet<>();
-
-        unsettledNodes.add(source);
-        while (unsettledNodes.size() != 0) {
-            Node currentNode = getLowestDistanceNode(unsettledNodes);
-            unsettledNodes.remove(currentNode);
-            for (Map.Entry< Node, Integer> adjacencyPair: currentNode.getAdjacentNodes().entrySet()) {
-                Node adjacentNode = adjacencyPair.getKey();
-                Integer edgeWeight = adjacencyPair.getValue();
-                if (!settledNodes.contains(adjacentNode)) {
-                    calculateMinimumDistance(adjacentNode, edgeWeight, currentNode);
-                    unsettledNodes.add(adjacentNode);
-                }
-            }
-            settledNodes.add(currentNode);
-        }
+        graph = calculateShortestPath(graph,source,destination);
         int min = 0;
         for(Node n : graph.getNodes()){
-            if(n.getAdjacentNodes().containsKey(source)){
-                if (min == 0 && n.getDistance() != 0){
-                    min = n.getDistance() +  n.getAdjacentNodes().get(source);
+            if(n.getAdjacentNodes().containsKey(source)) {
+                if (n.getDistance() != 0) {
+                    if (min == 0) {
+                        min = n.getDistance() + n.getAdjacentNodes().get(source);
+                    }
+                    min = Math.min(n.getDistance() + n.getAdjacentNodes().get(source), min);
                 }
-                min = Math.min( n.getDistance() +  n.getAdjacentNodes().get(source), min);
             }
         }
         return min;
@@ -114,7 +102,4 @@ public class Methods {
         }
     }
 
-    public static int numberDifRoutes(Graph graph, Node nodeC, Node nodeC1) {
-        return 0;
-    }
 }

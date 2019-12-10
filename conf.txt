@@ -1,0 +1,13 @@
+Input: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7
+1: A-B-C
+2: A-D
+3: A-D-C
+4: A-E-B-C-D
+5: A-E-D
+6: C C 3
+7: A C 4
+8: A C
+9: B B
+
+
+
