@@ -1,4 +1,5 @@
 # ShortestPath
+### Input File format(look conf.txt)
 #### Input: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7
 ##### 1: A-B-C
 ##### 2: A-D
